@@ -4,46 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Settings">
 
 
+    <Switch
+        android:id="@+id/backgroundMusicInGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+
+        android:text="מוזיקת רקע בתוך המשחק" />
 
     <Switch
         android:id="@+id/backgroundMusic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="מוזיקת רקע"
-        android:layout_marginTop="50dp"
-        android:checked="true"/>
-    <Switch
-        android:id="@+id/backgroundMusicInGame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="מוזיקת רקע"
-        android:layout_marginTop="50dp"
-        android:checked="true"/>
+        android:layout_marginTop="20dp"
+
+        android:text="מוזיקת רקע" />
 
     <Switch
         android:id="@+id/scoreDataSaving"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="שמירת נתונים אוטומתית"
         android:layout_marginTop="20dp"
-        android:checked="true"/>
+
+        android:text="שמירת נתונים אוטומתית" />
 
     <Switch
         android:id="@+id/audioTaps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="אפקטים שמע"
         android:layout_marginTop="20dp"
-        android:checked="true"/>
+
+        android:text="אפקטים שמע" />
 
     <Button
         android:id="@+id/resetBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="איפוס משחק" />
 
 

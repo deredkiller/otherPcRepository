@@ -12,8 +12,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 public class Settings extends AppCompatActivity {
-    Switch backgroundMusic, scoreDataSaving, audioTaps;
+    Switch backgroundMusic, scoreDataSaving, audioTaps,inGameBackgroundMusic;
     Intent intent, intentSettings;
+    Boolean background,inGameBackground,autoSave,moleTapsAudio;
 
 
     @Override
@@ -22,9 +23,11 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         backgroundMusic = (Switch) findViewById(R.id.backgroundMusic);
         scoreDataSaving = (Switch) findViewById(R.id.scoreDataSaving);
+        inGameBackgroundMusic =(Switch) findViewById(R.id.backgroundMusicInGame);
         audioTaps = (Switch) findViewById(R.id.audioTaps);
         intent = new Intent(Settings.this, Menu.class);
         intentSettings = new Intent(Settings.this, Settings.class);
+        setChecked();
         backgroundMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 
@@ -66,6 +69,20 @@ public class Settings extends AppCompatActivity {
             }
         });
 
+        inGameBackgroundMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked == true) {
+                    intent.putExtra("IN_GAME_BACKGROUND", true);
+                } else {
+                    intent.putExtra("IN_GAME_BACKGROUND", false);
+                }
+
+            }
+        });
+
 
     }
 
@@ -90,5 +107,17 @@ public class Settings extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void setChecked(){
+        backgroundMusic.setChecked(true);
+        scoreDataSaving.setChecked(true);
+        audioTaps.setChecked(true);
+        inGameBackgroundMusic.setChecked(true);
+        background=true;
+        inGameBackground=true;
+        autoSave=true;
+        moleTapsAudio=true;
     }
 }

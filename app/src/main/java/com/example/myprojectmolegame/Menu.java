@@ -4,23 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
 
-
 public class Menu extends AppCompatActivity implements View.OnClickListener {
-    Button btnPlay, btnScore, btnInstructions, btnSettings,btnStop;
+    Button btnPlay, btnScore, btnInstructions, btnSettings, btnStop;
     String userName;
     Intent musicIntent;
 
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
-        MenuInflater inflater= getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -29,8 +29,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
-       checkSettings();
-        onResume();
+        musicIntent = new Intent(this, MyService.class);
+        checkSettings();
         setContentView(R.layout.activity_menue);
         btnPlay = findViewById(R.id.btnPlay);
         btnScore = findViewById(R.id.btnScore);
@@ -46,16 +46,27 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
 
     private void checkSettings() {
         Intent oldIntent = getIntent();
-        boolean check =oldIntent.getBooleanExtra("BACKGROUND",true);
-        if(check==true){
+        boolean check = oldIntent.getBooleanExtra("BACKGROUND", true);
+        Log.d("checkSettings: ", check+"");
+        if (check == true) {
+            Log.d("checkSettings: ", "fuck");
+            startService(musicIntent);
+        }
+        else {
+            Log.d("checkSettings: ", "why");
+            stopService(musicIntent);
+        }
+
+        check = oldIntent.getBooleanExtra("AUTO_SAVE", true);
+        if (check == true) {
 
         }
-        check =oldIntent.getBooleanExtra("AUTO_SAVE",true);
-        if(check==true){
+        check = oldIntent.getBooleanExtra("TAP_AUDIO", true);
+        if (check == true) {
 
         }
-        check =oldIntent.getBooleanExtra("TAP_AUDIO",true);
-        if(check==true){
+        check = oldIntent.getBooleanExtra("IN_GAME_BACKGROUND", true);
+        if (check == true) {
 
         }
 
@@ -85,14 +96,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         if (view == btnStop) {
             onPause();
         }
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        startService(musicIntent);
-
 
     }
 
