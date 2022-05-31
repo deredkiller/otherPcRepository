@@ -4,12 +4,13 @@ public class GameScore {
 
     String name;
     long id;
-    int score;
+    int score,position;
 
     public GameScore(String name, int score, long id) {
         this.name = name;
         this.score = score;
         this.id=id;
+
     }
     public GameScore(String name, int score) {
         this.name = name;
@@ -22,6 +23,10 @@ public class GameScore {
     }
     public int getScore(){
         return score;
+    }
+
+    public long getId(){
+      return id;
     }
     public long setId (long id){
         this.id=id;

@@ -12,7 +12,7 @@ import android.widget.Button;
 
 
 public class Menu extends AppCompatActivity implements View.OnClickListener {
-    Button btnPlay, btnScore, btnInstructions, btnSettings;
+    Button btnPlay, btnScore, btnInstructions, btnSettings,btnStop;
     String userName;
     Intent musicIntent;
 
@@ -29,8 +29,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
-        musicIntent = new Intent(this, MyService.class);
-        startService(musicIntent);
+       checkSettings();
+        onResume();
         setContentView(R.layout.activity_menue);
         btnPlay = findViewById(R.id.btnPlay);
         btnScore = findViewById(R.id.btnScore);
@@ -41,6 +41,23 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
         btnSettings.setOnClickListener(this);
         btnInstructions.setOnClickListener(this);
 
+
+    }
+
+    private void checkSettings() {
+        Intent oldIntent = getIntent();
+        boolean check =oldIntent.getBooleanExtra("BACKGROUND",true);
+        if(check==true){
+
+        }
+        check =oldIntent.getBooleanExtra("AUTO_SAVE",true);
+        if(check==true){
+
+        }
+        check =oldIntent.getBooleanExtra("TAP_AUDIO",true);
+        if(check==true){
+
+        }
 
     }
 
@@ -65,6 +82,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
             Intent intent = new Intent(this, Instructions.class);
             startActivity(intent);
         }
+        if (view == btnStop) {
+            onPause();
+        }
+
     }
 
     @Override

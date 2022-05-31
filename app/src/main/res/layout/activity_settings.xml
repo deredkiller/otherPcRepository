@@ -14,21 +14,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="מוזיקת רקע"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:checked="true"/>
+    <Switch
+        android:id="@+id/backgroundMusicInGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="מוזיקת רקע"
+        android:layout_marginTop="50dp"
+        android:checked="true"/>
 
     <Switch
         android:id="@+id/scoreDataSaving"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="שמירת נתונים אוטומתית"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:checked="true"/>
 
     <Switch
         android:id="@+id/audioTaps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="אפקטים שמע"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:checked="true"/>
 
     <Button
         android:id="@+id/resetBtn"

@@ -78,7 +78,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                 @SuppressLint("Range") int score = cursor.getInt(cursor.getColumnIndex(COLUMN_SCORE));
                 @SuppressLint("Range") long id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
-                GameScore user= new GameScore(name, score);
+                GameScore user= new GameScore(name, score,id);
                 users.add(user);
             }
         }
