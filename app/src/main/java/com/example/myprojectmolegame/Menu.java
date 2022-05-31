@@ -75,7 +75,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view == btnPlay) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, modesActivity.class);
             Intent oldIntent = getIntent();
             userName = oldIntent.getStringExtra("USERNAME");
             intent.putExtra("USERNAME", userName);
