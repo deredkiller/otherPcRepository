@@ -10,7 +10,7 @@ public class Controller {
     private int score=0;
     private ThreadMolePopUp thread;
     private MainActivity activity ;
-    public int numOfHoles=9;
+    public int numOfHoles;
     private Model model;
     private int streak=0;
     private DBHelper dataBase;
@@ -18,7 +18,8 @@ public class Controller {
 
     public Controller(MainActivity activity) {
         this.activity = activity;
-        model=new Model(numOfHoles);
+        numOfHoles= activity.getNumOfHoles();
+        model=new Model( numOfHoles);
         dataBase= new DBHelper(activity);
         initiateThread();
     }

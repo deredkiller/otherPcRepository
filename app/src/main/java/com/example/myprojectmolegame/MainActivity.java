@@ -1,5 +1,6 @@
 package com.example.myprojectmolegame;
 
+import androidx.annotation.LongDef;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llMainDynamic;
     private LinearLayout LinearLayoutScore1, LinearLayoutPause;
     private ImageButton btnRetry;
+    String pause;
+    int column,row,numOfHoles;
+    Intent initBoardIntent;
 
 
     @Override
@@ -41,9 +45,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+        initBoardIntent = getIntent();
+        numOfHoles=initBoardIntent.getIntExtra("NUM_OF_HOLES",0);
+        row=initBoardIntent.getIntExtra("ROW",3);
+        column=initBoardIntent.getIntExtra("COLUMN",0);
         dynamicLayoutConstruction();
         controller = new Controller(this);
         scoreNum=findViewById(R.id.scoreNum);
+
+
+
         setOnClicks();
 //        makeBackroundVideo();
 
@@ -58,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 llMainDynamic.removeAllViews();
-                for (int i = 0; i < 9; i++) {
+                Log.d("bro",numOfHoles+" "+column+" "+row);
+                for (int i = 0; i < numOfHoles; i++) {
                     imgArray[i].setImageResource(R.drawable.hole);
                 }
                 llMainDynamic.addView(linearLayoutBoard);
@@ -83,9 +95,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (v.getTag().equals("pause")) {
                     controller.stopThread();
                     imgPause.setTag("paused");
+                    pause="pause";
                 } else {
                     controller.startThread();
                     imgPause.setTag("pause");
+                    pause="paused";
                 }
             }
         });
@@ -97,7 +111,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Log.d("hello", "onClick: " + view.getTag().toString());
-        controller.moleClicked((int) view.getTag());
+        if (pause=="pause"){
+
+        }
+        else{
+            controller.moleClicked((int) view.getTag());
+        }
+
+
     }
 
 //    private void makeBackroundVideo() {
@@ -136,7 +157,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             rowInboard.setLayoutParams(rowLayout);
             rowInboard.setOrientation(LinearLayout.HORIZONTAL);
             //ROWS OR width
-            for (int j = 0; j < 3; j++) {
+            row=initBoardIntent.getIntExtra("ROW",3);
+
+            for (int j = 0; j < row; j++) {
                 imgArray[indexRun] = new ImageView(this);
                 imgArray[indexRun].setTag(indexRun);
                 imgArray[indexRun].setLayoutParams(elementLayout);
@@ -153,9 +176,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void displayElement(int holeNum, Element element) {
+        Log.d("yo",""+ holeNum);
         int image = R.drawable.hole;
         if (element == Element.MOLE) image = R.drawable.mole;
-        //Log.d("hollo", "num");
+
         imgArray[holeNum].setImageResource(image);
     }
 
@@ -201,6 +225,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Creating dialog box
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+
+    public int getNumOfHoles() {
+
+        return numOfHoles;
     }
 
 
