@@ -7,11 +7,12 @@ import android.util.Log;
 
 public class ThreadMolePopUp extends Thread {
     Handler handler;
-    private boolean isRun=true;
+    private boolean isRun = true;
+    private int time = 0;
+
     public void setRun(boolean run) {
         isRun = run;
     }
-
 
 
     public ThreadMolePopUp(Handler handler) {
@@ -23,13 +24,72 @@ public class ThreadMolePopUp extends Thread {
     public void run() {
         super.run();
         while (isRun) {
-            Message msg = new Message();
-            msg.obj = 0;
-            handler.sendMessage(msg);
-            SystemClock.sleep(400);
+            if (time < 30) {
+                time++;
+                Message msg = new Message();
+                msg.obj = 0;
+                handler.sendMessage(msg);
+                SystemClock.sleep(1000);
+            } else {
+                if (time < 70) {
+                    time++;
+                    Message msg = new Message();
+                    msg.obj = 0;
+                    handler.sendMessage(msg);
+                    SystemClock.sleep(750);
+                } else {
+                    if (time < 120) {
+                        time++;
+                        Message msg = new Message();
+                        msg.obj = 0;
+                        handler.sendMessage(msg);
+                        SystemClock.sleep(500);
+                    } else {
+                        if (time < 170) {
+                            time++;
+                            Message msg = new Message();
+                            msg.obj = 0;
+                            handler.sendMessage(msg);
+                            SystemClock.sleep(400);
+                        } else {
+                            if (time < 220) {
+                                time++;
+                                Message msg = new Message();
+                                msg.obj = 0;
+                                handler.sendMessage(msg);
+                                SystemClock.sleep(300);
+                            } else {
+                                if (time < 295) {
+                                    time++;
+                                    Message msg = new Message();
+                                    msg.obj = 0;
+                                    handler.sendMessage(msg);
+                                    SystemClock.sleep(200);
+                                } else {
+                                    if (time < 395) {
+                                        time++;
+                                        Message msg = new Message();
+                                        msg.obj = 0;
+                                        handler.sendMessage(msg);
+                                        SystemClock.sleep(150);
+                                    } else {
+                                        if (time > 395) {
+                                            time++;
+                                            Message msg = new Message();
+                                            msg.obj = 0;
+                                            handler.sendMessage(msg);
+                                            SystemClock.sleep(100);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
 
+                }
+            }
         }
     }
-
 }
+
 

@@ -3,6 +3,7 @@ package com.example.myprojectmolegame;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 public class Controller {
@@ -50,10 +51,7 @@ public class Controller {
     // removing hole slot from the list and asking the mainActivity to display a mole
     public void moleAppear() {
         int holeNum = model.generateMole();
-//        if (holeNum == 8) {
-//            Log.d("9ISPICKED", "picked");
-//
-//        }
+        Log.d( "yoyo ",holeNum+"");
         if (holeNum!=-1){
             activity.displayElement(holeNum,Element.MOLE);
         }

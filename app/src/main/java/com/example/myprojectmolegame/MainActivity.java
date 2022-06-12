@@ -28,15 +28,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // 5. records - after we establish a database TODO
     private TextView scoreView,scoreNum;
     private Controller controller;
-    private ImageView imgArray[] = new ImageView[100];
+    private ImageView imgArray[] ;
     private ImageView imgPause;
     private LinearLayout linearLayoutBoard;
     private LinearLayout llMainDynamic;
     private LinearLayout LinearLayoutScore1, LinearLayoutPause;
     private ImageButton btnRetry;
-    String pause;
-    int column,row,numOfHoles;
+    String pause,gameMode;
+    int column,row,numOfHoles,margin,vertical;
     Intent initBoardIntent;
+    int image;
+    int width;
+    int height,size;
 
 
     @Override
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         initBoardIntent = getIntent();
+        image = R.drawable.hole;
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        width = metrics.widthPixels;
+        height = metrics.heightPixels;
         numOfHoles=initBoardIntent.getIntExtra("NUM_OF_HOLES",0);
         row=initBoardIntent.getIntExtra("ROW",3);
         column=initBoardIntent.getIntExtra("COLUMN",0);
@@ -129,15 +136,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    }
 
     public void dynamicLayoutConstruction() {
+        getGameMode();
         LinearLayoutPause = findViewById(R.id.linearLayoutPause);
         LinearLayoutScore1 = findViewById(R.id.linearLayoutScore1);
         LinearLayoutScore1.setTag("layoutScore");
         scoreView = findViewById(R.id.scoreView);
         llMainDynamic = findViewById(R.id.llDynamic);
         llMainDynamic.setOrientation(LinearLayout.VERTICAL);
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int width = metrics.widthPixels;
-        int height = metrics.heightPixels;
         linearLayoutBoard = new LinearLayout(this);
         linearLayoutBoard.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams BoardParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -145,20 +150,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BoardParams.setMargins(0, height / 100, 0, 0);
         linearLayoutBoard.setLayoutParams(BoardParams);
         //משנה כמה moles אתה יכול לעשים בlayout   ה verticaly
-        LinearLayout.LayoutParams rowLayout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, height / 4);
+        LinearLayout.LayoutParams rowLayout = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, height / size);
 //        משנה את המרג'ינס לצדדים של האוריזונטל layout
-        rowLayout.setMargins(width / 5, 1, width / 5, 1);
+        rowLayout.setMargins(width / margin, 1, 1, 1);
 //        משנה גודל תמונה
         LinearLayout.LayoutParams elementLayout = new LinearLayout.LayoutParams(width / 5, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout rowInboard;
         int indexRun = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < column; i++) {
             rowInboard = new LinearLayout(this);
             rowInboard.setLayoutParams(rowLayout);
             rowInboard.setOrientation(LinearLayout.HORIZONTAL);
             //ROWS OR width
-            row=initBoardIntent.getIntExtra("ROW",3);
-
             for (int j = 0; j < row; j++) {
                 imgArray[indexRun] = new ImageView(this);
                 imgArray[indexRun].setTag(indexRun);
@@ -172,14 +175,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         llMainDynamic.addView(linearLayoutBoard);
+
+    }
+
+    private void getGameMode() {
+        gameMode=initBoardIntent.getStringExtra("GAME_MODE");
+        if(gameMode.equals("normal")){
+            column=3;
+            row=3;
+            numOfHoles=9;
+            margin=5;
+            imgArray=new ImageView[9];
+            vertical=4;
+            size=4;
+        }
+        if(gameMode.equals("dungeon")) {
+            column=4;
+            row=4;
+            numOfHoles=16;
+            vertical=5;
+            margin=10;
+            imgArray=new ImageView[16];
+            size=5;
+        }
+
     }
 
 
     public void displayElement(int holeNum, Element element) {
         Log.d("yo",""+ holeNum);
-        int image = R.drawable.hole;
+        image=R.drawable.hole;
         if (element == Element.MOLE) image = R.drawable.mole;
-
         imgArray[holeNum].setImageResource(image);
     }
 
