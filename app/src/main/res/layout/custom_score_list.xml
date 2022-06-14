@@ -11,7 +11,18 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:weightSum="1.5">
+
+        <TextView
+            android:id="@+id/gameModeName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="game mode"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:layout_weight="0.5"
+
+            ></TextView>
 
         <TextView
             android:id="@+id/userNameView"
@@ -34,6 +45,7 @@
                 android:layout_weight="0.5"
 
                 ></TextView>
+
         </LinearLayout>
 
 

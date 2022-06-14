@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class modesActivity extends AppCompatActivity implements View.OnClickListener {
+public class modesActivity extends MenuForAllActivity implements View.OnClickListener {
     Button btnNormal, btnDungeon, btnGrowingHoles, btnHardcore;
 
     @Override

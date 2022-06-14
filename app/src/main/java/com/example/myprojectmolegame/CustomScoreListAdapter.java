@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CustomScoreListAdapter extends ArrayAdapter<GameScore> {
     Context context;
-    TextView scoreView,userNameView;
+    TextView scoreView,userNameView,gameModeView;
     List<GameScore> scoreList;
 
     public CustomScoreListAdapter( @NonNull Context context,  List<GameScore> objects) {
@@ -31,9 +31,11 @@ public class CustomScoreListAdapter extends ArrayAdapter<GameScore> {
         View view = layoutInflater.inflate(R.layout.custom_score_list, parent, false);
         scoreView=view.findViewById(R.id.scoreView);
         userNameView=view.findViewById(R.id.userNameView);
+        gameModeView=view.findViewById(R.id.gameModeName);
         GameScore score=scoreList.get(position);
         scoreView.setText(score.getScore()+"");
         userNameView.setText(score.getName()+"");
+        gameModeView.setText(score.getGameMode()+"");
         return view;
     }
 

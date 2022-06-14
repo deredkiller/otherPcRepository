@@ -11,7 +11,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ScoreActivity extends AppCompatActivity {
+public class ScoreActivity extends MenuForAllActivity {
     private ListView scoreList;
     private DBHelper dataBase;
     private ArrayList<GameScore> scores;
@@ -28,16 +28,10 @@ public class ScoreActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(android.view.Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
+
 
 
     public void showScores() {
-
         scores = dataBase.selectAll();
         scoreAdapter = new CustomScoreListAdapter(this,scores);
         scoreList.setAdapter(scoreAdapter);

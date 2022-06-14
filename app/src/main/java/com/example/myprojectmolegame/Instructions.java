@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class Instructions extends AppCompatActivity {
+public class Instructions extends MenuForAllActivity {
 TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

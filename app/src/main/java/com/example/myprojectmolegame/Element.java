@@ -1,6 +1,6 @@
 package com.example.myprojectmolegame;
 
 public enum Element{
-    MOLE,HOLE,HAIRED_MOLE,MOLE_BOSS,CARROT,BOMB;
+    MOLE,HOLE,CARROT,BOMB;
 
 }

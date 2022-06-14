@@ -8,19 +8,13 @@
     tools:context=".Settings">
 
 
-    <Switch
-        android:id="@+id/backgroundMusicInGame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
 
-        android:text="מוזיקת רקע בתוך המשחק" />
 
     <Switch
         android:id="@+id/backgroundMusic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="120dp"
 
         android:text="מוזיקת רקע" />
 
@@ -32,13 +26,6 @@
 
         android:text="שמירת נתונים אוטומתית" />
 
-    <Switch
-        android:id="@+id/audioTaps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-
-        android:text="אפקטים שמע" />
 
     <Button
         android:id="@+id/resetBtn"

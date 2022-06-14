@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="@drawable/back"
     tools:context=".loginActivity">
 <LinearLayout
     android:layout_width="match_parent"
@@ -17,7 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Enter nickname down below"
+        android:textStyle="bold"
+        android:text="Destroy The Moles And Their Comrades"
         android:textSize="50dp"
         android:layout_gravity="center"
         android:textAlignment="center"/>
@@ -28,7 +30,7 @@
         android:layout_weight="1"
         android:layout_gravity="center"
         android:textSize="30dp"
-        android:text="Please enter your nickname her"
+        android:text="Please enter your user name her"
         android:textAlignment="center"
         ></EditText>
     <Button

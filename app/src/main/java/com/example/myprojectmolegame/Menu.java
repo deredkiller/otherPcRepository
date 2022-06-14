@@ -2,7 +2,9 @@ package com.example.myprojectmolegame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuInflater;
@@ -15,6 +17,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     Button btnPlay, btnScore, btnInstructions, btnSettings, btnStop;
     String userName;
     Intent musicIntent;
+    SharedPreferences sp;
 
 
     @Override
@@ -44,33 +47,21 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+
     private void checkSettings() {
-        Intent oldIntent = getIntent();
-        boolean check = oldIntent.getBooleanExtra("BACKGROUND", true);
-        Log.d("checkSettings: ", check+"");
-        if (check == true) {
-            Log.d("checkSettings: ", "fuck");
+        sp = getApplicationContext().getSharedPreferences("settingPref", Context.MODE_PRIVATE);
+        boolean backgroundSound=sp.getBoolean("backgroundSettings",true);
+        if (backgroundSound) {
+
             startService(musicIntent);
-        }
-        else {
-            Log.d("checkSettings: ", "why");
+        } else {
+
             stopService(musicIntent);
         }
 
-        check = oldIntent.getBooleanExtra("AUTO_SAVE", true);
-        if (check == true) {
-
-        }
-        check = oldIntent.getBooleanExtra("TAP_AUDIO", true);
-        if (check == true) {
-
-        }
-        check = oldIntent.getBooleanExtra("IN_GAME_BACKGROUND", true);
-        if (check == true) {
-
-        }
 
     }
+
 
     @Override
     public void onClick(View view) {

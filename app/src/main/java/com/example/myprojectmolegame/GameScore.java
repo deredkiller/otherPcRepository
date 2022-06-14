@@ -5,16 +5,26 @@ public class GameScore {
     String name;
     long id;
     int score,position;
+    String gameMode;
 
-    public GameScore(String name, int score, long id) {
+    public GameScore(String name, int score, long id,String gameMode) {
         this.name = name;
         this.score = score;
         this.id=id;
+        this.gameMode=gameMode;
 
     }
-    public GameScore(String name, int score) {
+    public GameScore(String name, int score, long id) {
         this.name = name;
         this.score = score;
+        this.id = id;
+        this.gameMode = gameMode;
+    }
+
+    public GameScore(String name, int score,String gameMode) {
+        this.name = name;
+        this.score = score;
+        this.gameMode=gameMode;
     }
 
 
@@ -32,6 +42,9 @@ public class GameScore {
         this.id=id;
         return id;
     }
+    public void setGameMode(String gameMode){
+        this.gameMode=gameMode;
+    }
 
     @Override
     public String toString() {
@@ -40,6 +53,10 @@ public class GameScore {
                 ", id=" + id +
                 ", score=" + score +
                 '}';
+    }
+
+    public String getGameMode() {
+        return gameMode;
     }
 }
 

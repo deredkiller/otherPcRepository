@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#FADEB6"
         >
 
         <Button
             android:id="@+id/btnPlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_boarder"
             android:text="Play"
             android:textSize="30dp"
             android:layout_marginTop="@android:dimen/app_icon_size"
@@ -23,27 +25,33 @@
 
         <Button
             android:id="@+id/btnScore"
+            android:background="@drawable/rounded_boarder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Score"
             android:textSize="30dp"
+            android:layout_marginTop="10dp"
 
             />
 
         <Button
             android:id="@+id/btnSettings"
+            android:background="@drawable/rounded_boarder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Settings"
             android:textSize="30dp"
+            android:layout_marginTop="10dp"
            />
 
         <Button
             android:id="@+id/btnInstructions"
+            android:background="@drawable/rounded_boarder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Instructions"
             android:textSize="30dp"
+            android:layout_marginTop="10dp"
             />
 
 

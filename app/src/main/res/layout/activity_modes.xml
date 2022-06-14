@@ -7,6 +7,7 @@
     tools:context=".modesActivity"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#FADEB6"
     >
 
 
@@ -14,27 +15,36 @@
         android:id="@+id/btnNormalMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_boarder"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="רגיל" />
 
     <Button
         android:id="@+id/btnDungeonMode"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_boarder"
         android:layout_weight="1"
         android:text="צינוק" />
 
     <Button
         android:id="@+id/btnGrowingMode"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_boarder"
         android:layout_weight="1"
         android:text="חורים משתכפלים" />
 
     <Button
         android:id="@+id/btnHardcoreMode"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_boarder"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="קשה" />

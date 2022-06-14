@@ -13,6 +13,9 @@ public class ThreadMolePopUp extends Thread {
     public void setRun(boolean run) {
         isRun = run;
     }
+    public void setTime(int time){
+        this.time=time;
+    }
 
 
     public ThreadMolePopUp(Handler handler) {

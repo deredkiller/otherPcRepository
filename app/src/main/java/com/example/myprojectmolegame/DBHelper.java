@@ -19,14 +19,15 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_SCORE = "score";
-    private static final String COLUMN_RATING = "rating";
+    private static final String COLUMN_GAME_MODE = "gameMode";
     private static final String[] allColumns = {COLUMN_ID, COLUMN_NAME, COLUMN_SCORE};
+    private ArrayList<GameScore> scores;
 
     private static final String CREATE_TABLE_USER = "CREATE TABLE IF NOT EXISTS " +
             TABLE_RECORD + "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             COLUMN_NAME + " TEXT," +
-            COLUMN_SCORE + " INTEGER );";
+            COLUMN_SCORE + " INTEGER);";
 
     private SQLiteDatabase database; // access to table
 
@@ -60,11 +61,14 @@ public class DBHelper extends SQLiteOpenHelper {
         return user;
     }
 
-    public void deleteById(long id )
+    public void deleteById( )
     {
-        database = getWritableDatabase(); // get access to write data
-        database.delete(TABLE_RECORD, COLUMN_ID + " = " + id, null);
-        database.close(); // close the database
+        scores =selectAll();
+        for(int i=0;i<scores.size();i++){
+            database = getWritableDatabase(); // get access to write data
+            database.delete(TABLE_RECORD, COLUMN_ID + " = " + i, null);
+            database.close(); // close the database
+        }
 
     }
     public ArrayList<GameScore> selectAll()
